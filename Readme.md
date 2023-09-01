@@ -35,3 +35,4 @@
 - `git push origin master` : push the branch without setting up tracking, and you'll need to specify the remote and branch in future git push and git pull commands.
 - `git add <file1> <file2> <file3>` : this command will add multiple file changes together in the staging area
 - `git add .` : this command will add all files from working repo to staging area.
+- `git pull <remote name> <branch name>` : downloads latest changes from the branch of the mentioned remote in your local repo.
