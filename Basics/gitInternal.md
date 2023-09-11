@@ -1,0 +1,33 @@
+# Internal Working of Git  
+
+- Git is dependent on Hashing and tree data structure.
+- Git is like key, value pair, where key is the hash of data and value is the data. 
+- Git use cryptographic hash function  SHA-1
+- Hash value is always same for same data.
+- Git compresses data in a blob and store some meta data about data.
+- When we create a git init, it creates a git tree structure.
+- `echo 'hello git' | git hash-object --stdin` : Output of echo, treat as input for hash-object and provide 40 digit  hash value like 8d0e41234f24b6da002d962a26c2495ea16a425f
+- When we add all changes in git, it stores key value pair. key is the hash value and data store in a blob which is binary object.
+- `tree .git` this command is used to see the .git folder in a tree like structure in the terminal.
+- it shows all directory and blob hash value in object folder.
+- To see the content of file we are using command `git cat-file -p hashvalue`
+- we are missing other details of filename like directory details and sub directory details.
+- for managing this blob is not sufficient, so we need other data structure like tree
+- it contains pointers 
+	- to store blob 
+	- to store trees
+- it contains meta data 
+	- type of pointer (tree, blob)
+	- directory name 
+	- mode (permision for file)
+- To see the type of the file we use command `git cat-file -t hashvalue`
+- To see the tree object, we have to commit the changes. 
+- commit stores as key value pair, key is the hash-value but value is not a blob object, not a tree but it's commit object
+- commit object has details like
+	- author
+	- msg
+	- date
+	- time stamp
+	- reference of the hash-value of the root directory of tree.
+	- reference of the parent commit
+- Because of the time stamp two commit has not same SHA-1 hash value.
